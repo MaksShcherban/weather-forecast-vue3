@@ -1,4 +1,6 @@
-# .
+# WeatherApp-vue3
+
+This code is for a weather application that fetches weather data based on user input and displays the current weather conditions, including temperature, location, wind speed, and an icon.
 
 This template should help get you started developing with Vue 3 in Vite.
 
