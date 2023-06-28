@@ -62,59 +62,57 @@ export default {
 };
 </script>
 
-<style scoped>
-.icon img {
-  height: 150px;
+<style lang="scss" scoped>
+@import "@/assets/variables.scss";
+@import "@/assets/extend.scss";
+
+.full-container {
+  @extend %for-background;
+  background-image: url("/public/bg-img.png");
+
+
+}
+
+.container {
+  backdrop-filter: $standard-blur;
+  text-align: center;
+  font-family: $main-font-family ;
+  max-width: 600px;
+  color: white;
+  margin: $margin-center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  @extend %for-container;
+}
+
+.icon {
+  img {
+    height: 150px;
+  }
 }
 
 .style-text {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: $main-font-width;
   margin-top: 20px;
 }
 
 .temperature {
   font-size: 50px;
-  background: rgba(32, 43, 61, 0.6);
+  background: $background-temp;
   max-width: 200px;
   height: 70px;
   border-radius: 10px;
-  margin: 0 auto;
+  margin: $margin-center;
   margin-top: 10px;
-}
-
-.full-container {
-  background: url("../../public/bg-img.png") no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-}
-
-.container {
-  backdrop-filter: blur(10px);
-  text-align: center;
-  font-family: "Roboto Mono", monospace;
-  max-width: 600px;
-  height: 650px;
-  color: white;
-  border-radius: 100px;
-  border: 2px solid black;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 30px;
 }
 
 .inputCity {
   width: 300px;
   height: 30px;
   font-size: 22px;
-  border: none;
-  border-bottom-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background: rgba(235, 242, 255, 0.8);
   margin-top: 20px;
+  @extend %border-for-input;
 }
 
 .title {

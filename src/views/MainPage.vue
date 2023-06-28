@@ -15,7 +15,6 @@ export default {
     WeatherComponent,
     ForecastComponent,
     weatherService,
-
   },
   data() {
     return {
@@ -42,7 +41,7 @@ export default {
   },
 }
 </script>
-<style > body {
+<style lang="scss" > body {
    margin: 0;
    padding: 0;
  }

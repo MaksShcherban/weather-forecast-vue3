@@ -6,17 +6,23 @@
       <div class="container-forecast">
         <div class="title">5-day forecast</div>
         <div class="forecast-title">{{ forecastAll.city.name }}, {{ forecastAll.city.country }}</div>
-        <div class="day-week"> {{ day_one }}: <img class="weather-img" :src="imgDayOne">H: {{ maxTempFirst }}°C, L:
+        <div class="day-week"> <span>{{ day_one }} :</span> <img :src="imgDayOne">H: {{ maxTempFirst
+        }}°C, L:
           {{ minTempFirst }} °C </div>
-        <div class="day-week">{{ day_two }}: <img class="weather-img" :src="imgDayTwo"> H: {{ maxTempSecond }}°C, L:
+        <div class="day-week"><span>{{ day_two }}:</span> <img :src="imgDayTwo"> H: {{ maxTempSecond
+        }}°C, L:
           {{ minTempSecond }} °C</div>
-        <div class="day-week">{{ day_three }}: <img class="weather-img" :src="imgDayThree"> H: {{ maxTempThird }}°C, L:
+        <div class="day-week"><span>{{ day_three }}:</span> <img :src="imgDayThree"> H: {{
+          maxTempThird }}°C, L:
           {{ minTempThird }} °C</div>
-        <div class="day-week">{{ day_four }} :<img class="weather-img" :src="imgDayFour"> H: {{ maxTempFourth }}°C, L:
+        <div class="day-week"><span>{{ day_four }} :</span><img :src="imgDayFour"> H: {{ maxTempFourth
+        }}°C, L:
           {{ minTempFourth }} °C</div>
-        <div class="day-week">{{ day_five }} :<img class="weather-img" :src="imgDayFive"> H: {{ maxTempFive }}°C, L:
+        <div class="day-week"><span>{{ day_five }} :</span><img :src="imgDayFive"> H: {{ maxTempFive
+        }}°C, L:
           {{ minTempFive }} °C</div>
-        <div class="day-week">{{ day_six }} : <img class="weather-img" :src="imgDaySix"> H: {{ maxTempSix }}°C, L:
+        <div class="day-week"><span>{{ day_six }} :</span> <img :src="imgDaySix"> H: {{ maxTempSix
+        }}°C, L:
           {{ minTempSix }} °C</div>
 
 
@@ -667,45 +673,54 @@ export default {
 };
 </script>
 
-<style  scoped>
+<style  lang="scss" scoped>
+@import "@/assets/variables.scss";
+@import "@/assets/extend.scss";
+
 .full-container-forecast {
-  background: url("../../public/bg-forecast.png") no-repeat;
-  background-size: cover;
-  background-position: center;
+  @extend %for-background;
+  background-image: url("/public/bg-forecast.png");
   padding-top: 20px;
-  height: 100vh;
 }
 
 .container-forecast {
-  backdrop-filter: blur(10px);
+  backdrop-filter: $standard-blur;
   text-align: center;
-  font-family: "Roboto Mono", monospace;
-  max-width: 1200px;
-  height: 650px;
-  border-radius: 100px;
-  border: 2px solid black;
-  margin: 0 auto;
+  font-family: $main-font-family;
+  max-width: 800px;
+  margin: $margin-center;
   margin-top: 20px;
-  color: black;
+  color: white;
+  @extend %for-container;
 }
 
 .title {
   font-weight: 900;
   font-size: 30px;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .forecast-title {
   font-size: 25px;
-  font-weight: 600;
+  font-weight: $main-font-width ;
+  margin-top: 10px;
 }
 
 .day-week {
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 18px;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.weather-img {
-  width: 60px;
+  span {
+    font-weight: 800;
+  }
+
+  img {
+    width: 70px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
 }
 </style>
