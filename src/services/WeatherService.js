@@ -68,10 +68,6 @@ const getCurrentTime = () => {
   return currentTime;
 };
 
-const SevenDay = () => {
-
-  
-}
 export default {
   getWeatherData,
   getCurrentData,
