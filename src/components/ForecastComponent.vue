@@ -667,7 +667,6 @@ export default {
   backdrop-filter: $standard-blur;
   text-align: center;
   font-family: $main-font-family;
-  max-width: 800px;
   margin: $margin-center;
   margin-top: 20px;
   color: white;
@@ -676,19 +675,19 @@ export default {
 
 .title {
   font-weight: 900;
-  font-size: 30px;
-  padding-top: 30px;
+  font-size: 40px;
+  padding-top: 40px;
 }
 
 .forecast-title {
   font-size: 25px;
   font-weight: $main-font-width;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .day-week {
-  margin-top: 15px;
-  font-size: 18px;
+  margin-top: 20px;
+  font-size: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -698,9 +697,95 @@ export default {
   }
 
   img {
-    width: 70px;
+    width: 80px;
     margin-right: 20px;
     margin-left: 20px;
+  }
+}
+
+// Adaptive
+
+@media (max-width: $breakpoint-xxl) {
+  .container-forecast {
+    max-width: 650px;
+    height: 650px;
+  }
+  .title {
+    font-size: 30px;
+    padding-top: 20px;
+  }
+  .forecast-title {
+    font-size: 20px;
+  }
+  .day-week {
+    margin-top: 20px;
+    font-size: 18px;
+    img {
+      width: 70px;
+    }
+  }
+}
+@media (max-width: $breakpoint-xl) {
+  .container-forecast {
+    max-width: 550px;
+    height: 600px;
+  }
+  .title {
+    font-size: 25px;
+  }
+  .forecast-title {
+    font-size: 20px;
+  }
+  .day-week {
+    margin-top: 15px;
+    font-size: 16px;
+    img {
+      width: 60px;
+    }
+  }
+}
+@media (max-width: $breakpoint-lg) {
+  .container-forecast {
+    max-width: 500px;
+    height: 600px;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .container-forecast {
+    max-width: 450px;
+    height: 550px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .forecast-title {
+    font-size: 18px;
+  }
+  .day-week {
+    margin-top: 12px;
+    font-size: 15px;
+    img {
+      width: 55px;
+    }
+  }
+}
+@media (max-width: $breakpoint-sm) {
+  .container-forecast {
+    max-width: 350px;
+    height: 550px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .forecast-title {
+    font-size: 16px;
+  }
+  .day-week {
+    img {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
   }
 }
 </style>

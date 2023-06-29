@@ -6,9 +6,10 @@
 }
 
 %for-container {
-    height: 650px;
+    height: 800px;
     border-radius: 100px;
     border: 2px solid black;
+    max-width: 800px;
 }
 
 %border-for-input {
