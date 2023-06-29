@@ -1,25 +1,33 @@
 <template>
-  <div class="full-container">.
+  <div class="full-container">
+    .
     <div class="container">
-
       <div class="title">Weather App</div>
       <div class="style-text date">{{ getData }}</div>
       <div class="style-text date">{{ getTime }}</div>
-      <input v-model="inputCity" @keypress="fetchWeather" placeholder="Search..." type="text" class="inputCity" />
+      <input
+        v-model="inputCity"
+        @keypress="fetchWeather"
+        placeholder="Search..."
+        type="text"
+        class="inputCity"
+      />
 
       <div v-if="typeof weatherAll.main != 'undefined'">
         <div class="style-text location">
           {{ weatherAll.name }}, {{ weatherAll.sys.country }}
         </div>
         <div class="style-text temperature">
-          {{ (weatherAll.main.temp).toFixed(0) }}°C
+          {{ weatherAll.main.temp.toFixed(0) }}°C
         </div>
         <div class="style-text weather">{{ weatherAll.weather[0].main }}</div>
         <div class="icon">
           <img :src="weatherIMG" />
         </div>
 
-        <div class="style-text">Speed wind: {{ weatherAll.wind.speed }} m/s</div>
+        <div class="style-text">
+          Speed wind: {{ weatherAll.wind.speed }} m/s
+        </div>
       </div>
 
       <div class="style-text" v-else-if="weatherAll.cod == '404'">
@@ -29,7 +37,6 @@
       <div v-else>
         <div class="style-text">Input city 👆</div>
       </div>
-
     </div>
   </div>
 </template>
@@ -39,7 +46,7 @@ import weatherService from "@/services/weatherService";
 export default {
   props: {
     weatherAll: Object,
-    weatherIMG: String
+    weatherIMG: String,
   },
   data() {
     return {
@@ -51,9 +58,9 @@ export default {
   methods: {
     fetchWeather(e) {
       if (e.key == "Enter") {
-        this.$emit('data-updated', this.inputCity);
+        this.$emit("data-updated", this.inputCity);
       }
-    }
+    },
   },
   created() {
     this.getData = weatherService.getCurrentData();
@@ -69,14 +76,12 @@ export default {
 .full-container {
   @extend %for-background;
   background-image: url("/public/bg-img.png");
-
-
 }
 
 .container {
   backdrop-filter: $standard-blur;
   text-align: center;
-  font-family: $main-font-family ;
+  font-family: $main-font-family;
   max-width: 600px;
   color: white;
   margin: $margin-center;
