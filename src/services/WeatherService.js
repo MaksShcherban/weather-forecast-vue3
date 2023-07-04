@@ -1,11 +1,13 @@
+import util from "../utils/util";
 const URLWeatherBase = "https://api.openweathermap.org/data/2.5/weather?q=";
 const URLImgBase = "https://openweathermap.org/img/wn/";
 const APIkey = "8f6c3d62ba11f71326b7f754193f6185";
-const URLForecastBase =
-  "https://api.openweathermap.org/data/2.5/forecast?q=";
+const URLForecastBase = "https://api.openweathermap.org/data/2.5/forecast?q=";
 
 const getWeatherData = (inputCity) => {
-  const weather = fetch(`${URLWeatherBase}${inputCity}&units=metric&appid=${APIkey}`)
+  const weather = fetch(
+    `${URLWeatherBase}${inputCity}&units=metric&appid=${APIkey}`
+  )
     .then((response) => response.json())
     .then((json) => {
       return json;
@@ -19,59 +21,48 @@ const getIMGWeather = (imgCode) => {
 };
 
 const getForecastWeather = (inputCity) => {
-  const forecast = fetch(`${URLForecastBase}${inputCity}&units=metric&appid=${APIkey}`)
+  const forecast = fetch(
+    `${URLForecastBase}${inputCity}&units=metric&appid=${APIkey}`
+  )
     .then((response) => response.json())
     .then((json) => {
-      return json;
+      const lists = Object.values(json.list);
+      const objectDay = {
+        firstDay: [],
+        secondDay: [],
+        thirdDay: [],
+        fourDay: [],
+        fifthDay: [],
+        sixthDay: [],
+      };
+      lists.forEach((element) => {
+        if (element.dt_txt.split(" ")[0] === util.getDateForDay(0)) {
+          objectDay.firstDay.push(element);
+        }
+        if (element.dt_txt.split(" ")[0] === util.getDateForDay(1)) {
+          objectDay.secondDay.push(element);
+        }
+        if (element.dt_txt.split(" ")[0] === util.getDateForDay(2)) {
+          objectDay.thirdDay.push(element);
+        }
+        if (element.dt_txt.split(" ")[0] === util.getDateForDay(3)) {
+          objectDay.fourDay.push(element);
+        }
+        if (element.dt_txt.split(" ")[0] === util.getDateForDay(4)) {
+          objectDay.fifthDay.push(element);
+        }
+        if (element.dt_txt.split(" ")[0] === util.getDateForDay(5)) {
+          objectDay.sixthDay.push(element);
+        }
+      });
+
+      return objectDay;
     });
   return forecast;
 };
 
-const data = new Date();
-const getCurrentData = () => {
-  let day = data.getDate();
-  let year = data.getFullYear();
-
-  const mounts = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  let mount = mounts[data.getMonth()];
-  const dayWeeks = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-  let currentDay = dayWeeks[data.getDay() - 1];
-  let currentData = `${currentDay},${day} ${mount} ${year}`;
-  return currentData;
-};
-
-const getCurrentTime = () => {
-  let hour = data.getHours();
-  let minutes = data.getMinutes();
-  let currentTime = `${hour}:${minutes}`;
-  return currentTime;
-};
-
 export default {
   getWeatherData,
-  getCurrentData,
-  getCurrentTime,
   getIMGWeather,
   getForecastWeather,
 };

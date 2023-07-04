@@ -13,7 +13,7 @@
         class="inputCity"
       />
 
-      <div v-if="typeof weatherAll.main != 'undefined'">
+      <div v-if="weatherAll.main != undefined">
         <div class="style-text location">
           {{ weatherAll.name }}, {{ weatherAll.sys.country }}
         </div>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import weatherService from "@/services/weatherService";
+import util from "@/utils/util";
 export default {
   props: {
     weatherAll: Object,
@@ -62,9 +62,9 @@ export default {
       }
     },
   },
-  created() {
-    this.getData = weatherService.getCurrentData();
-    this.getTime = weatherService.getCurrentTime();
+  mounted() {
+    this.getData = util.getCurrentData();
+    this.getTime = util.getCurrentTime();
   },
 };
 </script>
